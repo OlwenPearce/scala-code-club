@@ -18,10 +18,16 @@ object Week1 {
     //remove items which are not digits
     val docNumbers = docLine.filter(char => Character.isDigit(char))
     //concat first and last digits
-    if (docNumbers.length < 1) { return 0 }
+    if (docNumbers.length < 1) {
+      return 0
+    }
     val stringVal = docNumbers.substring(0, 1) + docNumbers.substring(docNumbers.length - 1)
     //convert to number
     Integer.parseInt(stringVal)
+  }
+
+  def sumCalibrationValue(doc: List[String]): Int = {
+    doc.map(line => getCalibrationValue(line)).sum
   }
 
 }
