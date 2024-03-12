@@ -13,7 +13,8 @@ class week2Test extends AnyFunSuiteLike {
   // x (Game 1) + y (Game 2) + z (Game 3) = 8\
 
   test("isGamePossible") {
-    assert(Week2.isGamePossible(Array("3 blue","4 red", "1 red", "2 green", "6 blue", "2 green")) === true)
+    assert(Week2.isGamePossible("3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green") === true)
+    assert(Week2.isGamePossible("1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red") === false)
   }
 
 

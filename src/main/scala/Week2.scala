@@ -1,5 +1,11 @@
 object Week2 {
- def isGamePossible(cubes: Array[String]): Boolean = {
+
+  def isGamePossible(game: String): Boolean = {
+    val cubes = game.split("[,;]")
+    isGamePossibleForArray(cubes)
+  }
+
+ def isGamePossibleForArray(cubes: Array[String]): Boolean = {
    cubes.map(colour => isColourPossible(colour))
      .filter(result => result == false).length > 0
 
