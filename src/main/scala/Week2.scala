@@ -7,7 +7,7 @@ object Week2 {
   }
 
  def isGamePossibleForArray(cubes: Array[String]): Boolean = {
-   !cubes.map(colour => isColourPossible(colour)).contains(false)
+   cubes.forall(colour => isColourPossible(colour))
  }
 
   def isColourPossible(colour: String): Boolean = {
@@ -20,10 +20,7 @@ object Week2 {
       case s"$amount red" if Integer.parseInt(amount) <= 12 => true
       case s"$amount green" if Integer.parseInt(amount) <= 13 =>  true
       case s"$amount blue" if Integer.parseInt(amount) <= 14 =>  true
-      case _ => {
-        println(s"no match for ${colour}")
-        false
-      }
+      case _ => false
     }
 
   }
