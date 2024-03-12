@@ -4,15 +4,15 @@ object Week2 {
 
   def sumOfIdsWhichArePossible(games: List[String]): Int = {
     games.map(game => isPossibleForGame(game))
-      .filter(result => result.head._2)
-      .map(result => result.head._1)
+      .filter(result => result._2)
+      .map(result => result._1)
       .sum
   }
 
 
   //todo - tuple type?
 
-  def isPossibleForGame(idAndGameString: String): Map[Int, Boolean] = {
+  def isPossibleForGame(idAndGameString: String): (Int, Boolean) = {
     val idAndGame = idAndGameString.split(": ")
 
     val id = Integer.parseInt(idAndGame.head.filter(char => isDigit(char)))
@@ -20,9 +20,7 @@ object Week2 {
     //todo - nicer
     val game = idAndGame.tail.head.split("[,;] ")
 
-    Map(id -> isGamePossibleForArray(game))
-
-
+   (id,isGamePossibleForArray(game))
   }
 
  def isGamePossibleForArray(cubes: Array[String]): Boolean = {
