@@ -1,9 +1,28 @@
+import java.lang.Character.isDigit
+
 object Week2 {
 
-  def isGamePossible(game: String): Boolean = {
-    val cubes = game.split("[,;] ")
+  def sumOfIdsWhichArePossible(games: List[String]): Int = {
+    games.map(game => isPossibleForGame(game))
+      .filter(result => result.head._2)
+      .map(result => result.head._1)
+      .sum
+  }
 
-    isGamePossibleForArray(cubes)
+
+  //todo - tuple type?
+
+  def isPossibleForGame(idAndGameString: String): Map[Int, Boolean] = {
+    val idAndGame = idAndGameString.split(": ")
+
+    val id = Integer.parseInt(idAndGame.head.filter(char => isDigit(char)))
+
+    //todo - nicer
+    val game = idAndGame.tail.head.split("[,;] ")
+
+    Map(id -> isGamePossibleForArray(game))
+
+
   }
 
  def isGamePossibleForArray(cubes: Array[String]): Boolean = {
