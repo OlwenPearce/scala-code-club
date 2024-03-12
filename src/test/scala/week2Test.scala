@@ -14,7 +14,19 @@ class week2Test extends AnyFunSuiteLike {
 
   test("isGamePossible") {
     assert(Week2.isGamePossible("3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green") === true)
-    assert(Week2.isGamePossible("1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red") === false)
+    assert(Week2.isGamePossible("8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red") === false)
+  }
+
+  test("isColourPossible") {
+    assert(Week2.isColourPossible("8 green") === true)
+    assert(Week2.isColourPossible("14 green") === false)
+  }
+
+  test("isColourPossible errors") {
+    //todo - options here?
+    assert(Week2.isColourPossible("8 something") === false)
+    //todo - this blows up
+    assert(Week2.isColourPossible("something green") === false)
   }
 
 
