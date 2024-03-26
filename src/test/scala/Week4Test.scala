@@ -37,11 +37,13 @@ class Week4Test extends AnyFunSuiteLike {
     //In the above example, card 1 has five winning numbers (41, 48, 83, 86, and 17) and eight numbers you have (83, 86, 6, 31, 17, 9, 48, and 53).
     // Of the numbers you have, four of them (48, 83, 17, and 86) are winning numbers!
     // That means card 1 is worth 8 points (1 for the first match, then doubled three times for each of the three matches after the first).
+    val cardString = cards(0)
 
-    val winners = Week4.getWinners(List(41,48,83,86,17),List(83,86,6,31,17,9,48,53))
+    val card = Week4.toCard(cardString)
+
+    val winners = Week4.getWinners(card)
 
     assert(winners === List(83, 86, 17, 48))
-
   }
 
 }
