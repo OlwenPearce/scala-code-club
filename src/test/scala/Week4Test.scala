@@ -33,21 +33,52 @@ class Week4Test extends AnyFunSuiteLike {
   //Take a seat in the large pile of colorful cards. How many points are they worth in total?
   //
 
+  test("Get points for pile") {
+    val points = Week4.pointsForPile(cards)
+
+    assert(points === 13)
+  }
+
   test("Get winning numbers example") {
-    //In the above example, card 1 has five winning numbers (41, 48, 83, 86, and 17) and eight numbers you have (83, 86, 6, 31, 17, 9, 48, and 53).
-    // Of the numbers you have, four of them (48, 83, 17, and 86) are winning numbers!
-    // That means card 1 is worth 8 points (1 for the first match, then doubled three times for each of the three matches after the first).
     val cardString = cards(0)
 
+    //In the above example, card 1 has five winning numbers (41, 48, 83, 86, and 17)
+    // and eight numbers you have (83, 86, 6, 31, 17, 9, 48, and 53).
     val card = Week4.toCard(cardString)
 
     val winners = Week4.getWinners(card)
 
+    // Of the numbers you have, four of them (48, 83, 17, and 86) are winning numbers!
     assert(winners === List(83, 86, 17, 48))
 
     val points = Week4.getPoints(winners)
 
+    // That means card 1 is worth 8 points
+    // (1 for the first match, then doubled three times for each of the three matches after the first).
     assert(points === 8)
+  }
+
+  test("Get winning numbers example 2") {
+    //Card 2 has two winning numbers (32 and 61), so it is worth 2 points.
+    val cardString = cards(1)
+    val card = Week4.toCard(cardString)
+
+    val winners = Week4.getWinners(card)
+    assert(winners === List(61, 32))
+
+    val points = Week4.getPoints(winners)
+    assert(points === 2)
+  }
+
+  test("Get winning numbers example no points") {
+    val cardString = cards(5)
+    val card = Week4.toCard(cardString)
+
+    val winners = Week4.getWinners(card)
+    assert(winners === List())
+
+    val points = Week4.getPoints(winners)
+    assert(points === 0)
   }
 
 }

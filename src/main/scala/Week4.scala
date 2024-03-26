@@ -4,6 +4,14 @@ case class Card (
 )
 object Week4 {
 
+  def pointsForPile(cardStrings: List[String]): Int = {
+    val cards = cardStrings.map(card => toCard(card))
+    val winners = cards.map(card => getWinners(card))
+    val points = winners.map(winners => getPoints(winners))
+
+    points.sum
+  }
+
   def toCard(card: String): Card = {
      def toNumbers(numbers: String): Array[Int] = numbers
        .split(" ").filter(number => number.nonEmpty)
@@ -22,8 +30,10 @@ object Week4 {
   }
 
   def getPoints(winners: Array[Int]): Int = {
-    //todo check when no matches
-    winners.fold(1)((accumulator, value) => accumulator * 2)
+    if (winners.length < 1) {
+      return 0
+    }
+    scala.math.pow(2, winners.length - 1).toInt
   }
 
 }
