@@ -33,7 +33,7 @@ class Week4Test extends AnyFunSuiteLike {
   //Take a seat in the large pile of colorful cards. How many points are they worth in total?
   //
 
-  test("Get winning numbers") {
+  test("Get winning numbers example") {
     //In the above example, card 1 has five winning numbers (41, 48, 83, 86, and 17) and eight numbers you have (83, 86, 6, 31, 17, 9, 48, and 53).
     // Of the numbers you have, four of them (48, 83, 17, and 86) are winning numbers!
     // That means card 1 is worth 8 points (1 for the first match, then doubled three times for each of the three matches after the first).
@@ -44,6 +44,10 @@ class Week4Test extends AnyFunSuiteLike {
     val winners = Week4.getWinners(card)
 
     assert(winners === List(83, 86, 17, 48))
+
+    val points = Week4.getPoints(winners)
+
+    assert(points === 8)
   }
 
 }

@@ -21,4 +21,9 @@ object Week4 {
     card.heldNumbers.filter(number => card.winningNumbers.contains(number))
   }
 
+  def getPoints(winners: Array[Int]): Int = {
+    //todo check when no matches
+    winners.fold(1)((accumulator, value) => accumulator * 2)
+  }
+
 }
