@@ -58,14 +58,17 @@ class Week5Test extends AnyFunSuiteLike {
 
   test("makes map and gets values") {
     //The first line has a destination range start of 50, a source range start of 98, and a range length of 2.
-    val resultSeedToSoilMap = Variable.apply("50 98 2")
+    val resultSeedToSoilMap = Variable.apply(seedToSoilMap)
 
     // With this information, you know that seed number 98 corresponds to soil number 50
     //    Any source numbers that aren 't mapped correspond to the same destination number
     //  .So , seed number 10 corresponds to soil number 10.
     assert(resultSeedToSoilMap.getParameterValue(98) === 50)
+    assert(resultSeedToSoilMap.getParameterValue(52) === 54)
     assert(resultSeedToSoilMap.getParameterValue(10) === 10)
   }
+
+
 
 
 }

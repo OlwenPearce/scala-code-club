@@ -7,7 +7,13 @@ case class Variable(
 }
 
 object Variable{
-  def apply(ranges: String): Variable = {
+  def apply(ranges: List[String]): Variable = {
+    val values = ranges.flatMap(section => createMap(section).toList).toMap
+
+    Variable(values)
+  }
+
+  private def createMap(ranges: String): IndexedSeq[(Int, Int)] = {
     val parts = ranges.split(" ")
 
     val destination: Int = Integer.parseInt(parts(0))
@@ -16,7 +22,7 @@ object Variable{
 
     val range = 1 to rangeLength
 
-    Variable(range.map(r => (source + r - 1, destination + r - 1)).toMap)
+    range.map(r => (source + r - 1, destination + r - 1))
   }
 }
 
