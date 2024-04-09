@@ -27,5 +27,7 @@ object Variable{
 }
 
 object Week5 {
-
+  def getLocationForSeed(variables: List[Variable], seed: Int): Int = {
+    variables.foldLeft(seed)((key, map) => map.getParameterValue(key))
+  }
 }

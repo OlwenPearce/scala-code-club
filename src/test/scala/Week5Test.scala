@@ -68,6 +68,31 @@ class Week5Test extends AnyFunSuiteLike {
     assert(resultSeedToSoilMap.getParameterValue(10) === 10)
   }
 
+//  The gardener and his team want to get started as soon as possible
+//  , so they 'd like to know the closest location that needs a seed.Using these maps
+//  , find the lowest location number that corresponds to any of the initial seeds.To
+//  do this, you'll need to convert each seed number through other categories until
+//  you can find its corresponding location number
+  test("get location") {
+    val maps = List(
+      seedToSoilMap,
+      soilToFertilizerMap,
+      fertilizerToWaterMap,
+      waterToLightMap,
+      lightToTemperatureMap,
+      temperatureToHumidityMap,
+      humidityToLocationMap
+    )
+
+    val variables = maps.map(m => Variable(m))
+
+    assert(Week5.getLocationForSeed(variables, 79) === 82)
+    assert(Week5.getLocationForSeed(variables, 14) === 43)
+    assert(Week5.getLocationForSeed(variables, 55) === 86)
+    assert(Week5.getLocationForSeed(variables, 13) === 35)
+
+  }
+
 
 
 
