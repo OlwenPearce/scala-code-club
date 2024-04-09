@@ -27,6 +27,10 @@ object Variable{
 }
 
 object Week5 {
+
+  def getLowestLocationForSeeds(variables: List[Variable], seeds: List[Int]): Int = {
+    seeds.map(seed => getLocationForSeed(variables, seed)).min
+  }
   def getLocationForSeed(variables: List[Variable], seed: Int): Int = {
     variables.foldLeft(seed)((key, map) => map.getParameterValue(key))
   }
