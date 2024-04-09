@@ -1,7 +1,13 @@
-object Week5 {
+case class Variable(
+    parameterMap: Map[Int, Int]
+                   ) {
+  def getParameterValue(key: Int): Int = {
+    this.parameterMap.getOrElse(key, key)
+  }
+}
 
-
-  def createMap(ranges: String): Map[Int, Int] = {
+object Variable{
+  def apply(ranges: String): Variable = {
     val parts = ranges.split(" ")
 
     val destination: Int = Integer.parseInt(parts(0))
@@ -10,11 +16,10 @@ object Week5 {
 
     val range = 1 to rangeLength
 
-    range.map(r => (source + r - 1, destination + r - 1)).toMap
+    Variable(range.map(r => (source + r - 1, destination + r - 1)).toMap)
   }
+}
 
-  def getValueFromMap(map: Map[Int, Int], key: Int): Int = {
-    map.getOrElse(key, key)
-  }
+object Week5 {
 
 }
