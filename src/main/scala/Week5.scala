@@ -7,4 +7,8 @@ object Week5 {
     range.map(r => (source + r - 1, destination + r - 1)).toMap
   }
 
+  def getValueFromMap(map: Map[Int, Int], key: Int): Int = {
+    map.getOrElse(key, key)
+  }
+
 }
